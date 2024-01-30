@@ -1,0 +1,6 @@
+{
+    "workbench.editor.wrapTabs": false,
+    "debug.console.wordWrap": true,
+    "notebook.output.wordWrap": false,
+    "chat.editor.wordWrap": "off"
+}
