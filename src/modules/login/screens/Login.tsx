@@ -17,7 +17,7 @@ const Login = () => {
                 <Button
                     type={theme.buttons.buttonsTheme.primary}
                     margin="16px"
-                    title="ENTRAR"
+                    title="ENTRAR"                    
                     onPress={handleOnPress}
                 />
             </ContainerLogin>
