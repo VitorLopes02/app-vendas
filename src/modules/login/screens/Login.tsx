@@ -13,7 +13,7 @@ const Login = () => {
     return (
         <View>
             <ContainerLogin>                
-                <Input />
+            <Input placeholder="Digite seu email" placeholderTextColor={theme.colors.grayTheme.gray100} title="Email:" />
                 <Button
                     type={theme.buttons.buttonsTheme.primary}
                     margin="16px"

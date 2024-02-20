@@ -22,7 +22,7 @@ const Button = ({ title, type, loading, margin, disabled, onPress, ...props }: B
     
     const renderText = (color: string) => (
         <>
-        <Text type={textTypes.BUTTON_BOLD} color={color}>
+        <Text type={textTypes.BUTTON_SEMI_BOLD} color={color}>
             {title}
         </Text>
         {loading && 
