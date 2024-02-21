@@ -6,7 +6,7 @@ export const grayTheme = {
 
 export const neutralTheme = {
     white: '#ffffff', 
-    black: '#262824'   
+    black: '#262824',   
 };
 
 export const mainTheme = {
@@ -20,3 +20,7 @@ export const pinkTheme = {
 export const purpleTheme = {
     purple80: '#512C85',
 };
+
+export const orangeTheme = {
+    orange80: '#E7774D',
+}
