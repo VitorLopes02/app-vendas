@@ -13,7 +13,9 @@ const Login = () => {
     return (
         <View>
             <ContainerLogin>                          
-            <Input placeholder="Digite seu email" placeholderTextColor={theme.colors.grayTheme.gray100} title="Email:" />
+            <Input margin="0px 0px 8px 8px" placeholder="Digite seu email" placeholderTextColor={theme.colors.grayTheme.gray100} title="Email:" />
+            <Input secureTextEntry placeholder="Digite sua senha" placeholderTextColor={theme.colors.grayTheme.gray100} title="Senha:" />
+
                 <Button
                     type={theme.buttons.buttonsTheme.primary}
                     margin="16px"
