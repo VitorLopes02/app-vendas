@@ -9,3 +9,8 @@ export const ContainerLogin = styled.View`
     justify-content: center;
     align-items: center;    
 `
+export const ImageLogo = styled.Image`
+    width: 150px;
+    height: 100px;
+    margin-bottom: 24px;
+`;
