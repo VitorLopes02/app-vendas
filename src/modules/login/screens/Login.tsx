@@ -3,11 +3,13 @@ import { ContainerLogin, ImageLogo } from "../styles/login.style";
 import Input from "../../../shared/components/input/Input";
 import Button from "../../../shared/components/button/Button";
 import { theme } from "../../../shared/themes/themes";
+import axios from "axios";
 
 const Login = () => {
 
-    const handleOnPress = () => {
+    const handleOnPress = async () => {
         console.log("Clico");
+    
     }
 
     return (
