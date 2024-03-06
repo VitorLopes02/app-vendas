@@ -3,14 +3,19 @@ import { ContainerLogin, ImageLogo } from "../styles/login.style";
 import Input from "../../../shared/components/input/Input";
 import Button from "../../../shared/components/button/Button";
 import { theme } from "../../../shared/themes/themes";
-import axios from "axios";
+import { useLogin } from "../hooks/useLogin";
+
 
 const Login = () => {
-
-    const handleOnPress = async () => {
-        console.log("Clico");
-    
-    }
+    const {
+        email,
+        password,
+        errorMessage,
+        loading,
+        handleOnChangeEmail,
+        handleOnChangePassword,
+        handleOnPress
+    } = useLogin();
 
     return (
         <View>
@@ -19,11 +24,29 @@ const Login = () => {
                 resizeMode="center"                
                 source={require('../../../assets/images/logo.png')}
             />
-            <Input margin="0px 0px 8px 8px" placeholder="Digite seu email" placeholderTextColor={theme.colors.grayTheme.gray100} title="Email:" />
-            <Input secureTextEntry placeholder="Digite sua senha" placeholderTextColor={theme.colors.grayTheme.gray100} title="Senha:" />
+            <Input 
+                value={email}
+                errorMessage={errorMessage} 
+                margin="0px 0px 8px 8px" 
+                placeholder="Digite seu email" 
+                placeholderTextColor={theme.colors.grayTheme.gray100} 
+                title="Email:"
+                onChange={handleOnChangeEmail} 
+            />
+                
+            <Input 
+                value={password}
+                errorMessage={errorMessage}
+                secureTextEntry 
+                placeholder="Digite sua senha" 
+                placeholderTextColor={theme.colors.grayTheme.gray100} 
+                title="Senha:"
+                onChange={handleOnChangePassword} 
+            />
 
                 <Button
                     type={theme.buttons.buttonsTheme.primary}
+                    loading={loading}
                     margin="16px"
                     title="ENTRAR"                                       
                     onPress={handleOnPress}
