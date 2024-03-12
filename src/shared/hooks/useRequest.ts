@@ -13,9 +13,7 @@ export const useRequest = () => {
 
     const authRequest = async (body: RequestLogin) => {
         setLoading(true);
-        await connectionAPIPost<ReturnLogin>('http://172.19.128.1:8080/auth', {
-            body
-        })
+        await connectionAPIPost<ReturnLogin>('http://172.19.128.1:8080/auth', body)
         .then((result) => {
             dispatch(setUserAction(result.user));            
         })
