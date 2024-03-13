@@ -7,8 +7,8 @@ import Button from '../button/Button';
 
 
 interface ModalProps extends ModalPropsReact {
-    title: string;
-    text: string;    
+    title?: string;
+    text?: string;    
     onCloseModal: () => void;
 };
 
