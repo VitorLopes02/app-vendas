@@ -1,18 +1,18 @@
-import { useDispatch } from "react-redux";
-import { UserType } from "../../../shared/types/userType";
-import { useAppSelector } from "../../hooks";
-import { setUserAction } from ".";
+import { useDispatch } from 'react-redux';
+import { UserType } from '../../../shared/types/userType';
+import { useAppSelector } from '../../hooks';
+import { setUserAction } from '.';
 
 export const UseUserReducer = () => {
-    const dispatch = useDispatch();
-    const { user } = useAppSelector((state) => state.userReducer);
+  const dispatch = useDispatch();
+  const { user } = useAppSelector((state) => state.userReducer);
 
-    const setUser = (currentUser: UserType) => {
-        dispatch(setUserAction(currentUser)); 
-    }
+  const setUser = (currentUser: UserType) => {
+    dispatch(setUserAction(currentUser));
+  };
 
-    return {
-        user,
-        setUser,
-    }
-}
+  return {
+    user,
+    setUser,
+  };
+};
