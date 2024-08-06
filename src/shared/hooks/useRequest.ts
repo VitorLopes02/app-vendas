@@ -6,6 +6,7 @@ import { UseUserReducer } from '../../store/reducers/userReducer/useUserReducer'
 import { useGlobalReducer } from '../../store/reducers/globalReducer/useGlobalReducer';
 import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import { MenuUrl } from '../enums/MenuUrl.enum';
+import { setAuthorizationToken } from '../functions/connection/auth';
 
 export const useRequest = () => {
   const { reset } = useNavigation<NavigationProp<ParamListBase>>();
@@ -18,13 +19,16 @@ export const useRequest = () => {
     setLoading(true);
     await connectionAPIPost<ReturnLogin>('http://172.19.128.1:8080/auth', body)
       .then((result) => {
+        setAuthorizationToken(result.accesToken);
         setUser(result.user);
         reset({
           index: 0,
           routes: [{ name: MenuUrl.HOME }],
         });
       })
-      .catch(() => {
+      .catch((error) => {
+        console.log(`'http://172.19.128.1:8080/auth', ${body}`);
+        console.log('getError', error);
         setModal({
           visible: true,
           title: 'Erro',
