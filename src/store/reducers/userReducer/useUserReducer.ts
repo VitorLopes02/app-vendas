@@ -3,7 +3,7 @@ import { UserType } from '../../../shared/types/userType';
 import { useAppSelector } from '../../hooks';
 import { setUserAction } from '.';
 
-export const UseUserReducer = () => {
+export const useUserReducer = () => {
   const dispatch = useDispatch();
   const { user } = useAppSelector((state) => state.userReducer);
 

@@ -4,10 +4,8 @@ import Input from '../../../shared/components/input/Input';
 import Button from '../../../shared/components/button/Button';
 import { theme } from '../../../shared/themes/themes';
 import { useLogin } from '../hooks/useLogin';
-import { useNavigation } from '@react-navigation/native';
 
 const Login = () => {
-  const navigation = useNavigation();
   const {
     email,
     password,
@@ -31,7 +29,6 @@ const Login = () => {
           title="Email:"
           onChange={handleOnChangeEmail}
         />
-
         <Input
           value={password}
           errorMessage={errorMessage}
@@ -41,7 +38,6 @@ const Login = () => {
           title="Senha:"
           onChange={handleOnChangePassword}
         />
-
         <Button
           type={theme.buttons.buttonsTheme.primary}
           loading={loading}

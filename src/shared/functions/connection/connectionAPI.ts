@@ -1,24 +1,39 @@
 import { MethodEnum } from '../../enums/methods.enum';
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
+import { getAuthorizationToken } from './auth';
 
 export type MethodType = 'get' | 'post' | 'put' | 'delete' | 'patch';
 
 export default class ConnectionAPI {
+  private static async getConfig(): Promise<AxiosRequestConfig> {
+    const token = await getAuthorizationToken();
+    return {
+      headers: {
+        Authorization: token,
+        'Content-Type': 'application/json',
+      },
+    };
+  }
+
   static async call<T>(url: string, method: MethodType, body?: unknown): Promise<T> {
+    const config = await this.getConfig();
+
     switch (method) {
       case MethodEnum.DELETE:
       case MethodEnum.GET:
-        return (await axios[method]<T>(url)).data;
+        return (await axios[method]<T>(url, config)).data;
       case MethodEnum.POST:
       case MethodEnum.PUT:
       case MethodEnum.PATCH:
       default:
-        return (await axios[method]<T>(url, body)).data;
+        return (await axios[method]<T>(url, body, config)).data;
     }
   }
 
   static async connect<T>(url: string, method: MethodType, body?: unknown): Promise<T> {
-    return this.call<T>(url, method, body).catch((error) => {
+    try {
+      return await this.call<T>(url, method, body);
+    } catch (error: any) {
       if (error.response) {
         switch (error.response.status) {
           case 401:
@@ -29,7 +44,7 @@ export default class ConnectionAPI {
         }
       }
       throw new Error('Sem conexão com o backend');
-    });
+    }
   }
 }
 

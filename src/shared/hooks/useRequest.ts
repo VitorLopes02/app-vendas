@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { RequestLogin } from '../types/requestLogin';
 import { connectionAPIPost } from '../functions/connection/connectionAPI';
 import { ReturnLogin } from '../types/returnLogin';
-import { UseUserReducer } from '../../store/reducers/userReducer/useUserReducer';
+import { useUserReducer } from '../../store/reducers/userReducer/useUserReducer';
 import { useGlobalReducer } from '../../store/reducers/globalReducer/useGlobalReducer';
 import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import { MenuUrl } from '../enums/MenuUrl.enum';
@@ -10,7 +10,7 @@ import { setAuthorizationToken } from '../functions/connection/auth';
 
 export const useRequest = () => {
   const { reset } = useNavigation<NavigationProp<ParamListBase>>();
-  const { setUser } = UseUserReducer();
+  const { setUser } = useUserReducer();
   const { setModal } = useGlobalReducer();
   const [loading, setLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
@@ -19,7 +19,7 @@ export const useRequest = () => {
     setLoading(true);
     await connectionAPIPost<ReturnLogin>('http://172.19.128.1:8080/auth', body)
       .then((result) => {
-        setAuthorizationToken(result.accesToken);
+        setAuthorizationToken(result.accessToken);
         setUser(result.user);
         reset({
           index: 0,
